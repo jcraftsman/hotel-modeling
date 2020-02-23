@@ -47,3 +47,5 @@ application {
     // Define the main class for the application.
     mainClassName = 'booking.AppKt'
 }
+
+task stage(dependsOn: ["clean", "build"])
