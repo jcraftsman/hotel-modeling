@@ -3,13 +3,16 @@
  */
 package booking
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello world."
-        }
-}
+import io.javalin.Javalin
 
 fun main(args: Array<String>) {
-    println(App().greeting)
+    bootstrapWebServer(Javalin.create()).start()
 }
+
+val bootstrapWebServer: (Javalin) -> Javalin =
+        { javalinWebServer ->
+            javalinWebServer.get("/hello/:name") { ctx ->
+                ctx.result("Hello: " + ctx.pathParam("name"))
+            }
+            javalinWebServer
+        }
