@@ -4,9 +4,12 @@
 package booking
 
 import io.javalin.Javalin
+import java.lang.Integer.parseInt
 
 fun main(args: Array<String>) {
-    bootstrapWebServer(Javalin.create()).start()
+    val port = parseInt(System.getenv("PORT"));
+
+    bootstrapWebServer(Javalin.create()).start(port)
 }
 
 val bootstrapWebServer: (Javalin) -> Javalin =
