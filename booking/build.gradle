@@ -48,4 +48,6 @@ application {
     mainClassName = 'booking.AppKt'
 }
 
-task stage(dependsOn: ["clean", "build"])
+task stage {
+    dependsOn installDist
+}
